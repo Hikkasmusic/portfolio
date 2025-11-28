@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIKKAS - VIDEOGAME SOUNDTRACKS</title>
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --text-color: #e6e6e6;
+            --highlight-color: #e94560;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 15px 0;
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--highlight-color);
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--accent-color);
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background-color: var(--highlight-color);
+            border-color: var(--highlight-color);
+        }
+
+        .lang-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1920x1080/?abstract') no-repeat center center/cover;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: var(--highlight-color);
+        }
+
+        .hero-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--highlight-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #d13454;
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: var(--highlight-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        /* Music Sections */
+        .music-section {
+            background-color: var(--secondary-color);
+        }
+
+        /* Carousel container */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .genre-card {
+            background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            flex: 0 0 calc(33.333% - 20px);
+            margin: 0 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .genre-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--highlight-color), #ff7b9c);
+        }
+
+        .genre-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .genre-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--highlight-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .genre-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--highlight-color), transparent);
+        }
+
+        .track {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .track:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .track-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .track-description {
+            font-size: 0.85rem;
+            color: #b3b3b3;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        audio {
+            width: 100%;
+            height: 35px;
+            margin-top: 10px;
+            border-radius: 20px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: var(--accent-color);
+        }
+
+        .subgenre-container {
+            margin-top: 15px;
+        }
+
+        .subgenre-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #e6e6e6;
+            padding-left: 10px;
+            border-left: 3px solid var(--highlight-color);
+        }
+
+        .text-field {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 12px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            width: 100%;
+            min-height: 80px;
+            resize: vertical;
+            font-size: 0.9rem;
+        }
+
+        /* Carousel navigation */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .carousel-btn {
+            background-color: var(--accent-color);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--highlight-color);
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background-color: var(--highlight-color);
+            transform: scale(1.2);
+        }
+
+        /* Conclusion Section */
+        .conclusion {
+            text-align: center;
+            background-color: var(--primary-color);
+        }
+
+        .conclusion p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact-label {
+            font-weight: bold;
+            color: var(--highlight-color);
+            margin-right: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--highlight-color);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .genre-card {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .genre-card {
+                flex: 0 0 calc(100% - 20px);
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo">HIKK<span>AS</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link" data-lang="home">Home</a></li>
+                    <li><a href="#music" class="nav-link" data-lang="music">Music</a></li>
+                    <li><a href="#conclusion" class="nav-link" data-lang="conclusion">So what?</a></li>
+                    <li><a href="#contact" class="nav-link" data-lang="contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>HIKKAS</h1>
+            <h2 data-lang="name">Herman</h2>
+            <p data-lang="hero-text">I'm 19 and I create unique music for video games in various genres. Check out my genres and tracks, I'd be happy to work on your projects!</p>
+            <a href="#music" class="btn" data-lang="listen-btn">Listen to Music</a>
+        </div>
+    </section>
+
+    <!-- Music Sections -->
+    <section id="music" class="music-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="music-title">My Music</h2>
+            
+            <!-- Carousel container for genre cards -->
+            <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel">
+                    <!-- 8-BIT Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">8-BIT</h3>
+                        <div class="track">
+                            <div class="track-title" data-lang="track1-title">NO SUCH THING</div>
+                            <div class="track-description" data-lang="track1-desc">A track showing a mix of emotions of the corresponding genre, created as a test of sound manipulation capabilities in 8-bit style.</div>
+                            <audio controls>
+                                <source src="No such thing.mp3" type="audio/mpeg">
+                                <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                            </audio>
+                        </div>
+                    </div>
+
+                    <!-- ELECTRONIC Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">ELECTRONIC</h3>
+                        
+                        <div class="subgenre-container">
+                            <h4 class="subgenre-title" data-lang="electronic-positive">Positive Mood</h4>
+                            <div class="track">
+                                <div class="track-title" data-lang="track3-title">DAYDREAMING</div>
+                                <div class="track-description" data-lang="track3-desc">Optimistic electronic composition, inspiration, childhood</div>
+                                <audio controls>
+                                    <source src="Daydreaming.mp3" type="audio/mpeg">
+                                    <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                                </audio>
+                            </div>
+                        </div>
+                        
+                        <div class="subgenre-container">
+                            <h4 class="subgenre-title" data-lang="electronic-sad">Sad Mood</h4>
+                            <div class="track">
+                                <div class="track-title" data-lang="track4-title">FLOWERBLOOM</div>
+                                <div class="track-description" data-lang="track4-desc">A sad song about fading love. Minimalism and subtlety of emotion.</div>
+                                <audio controls>
+                                    <source src="Flowerbloom.mp3" type="audio/mpeg">
+                                    <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                                </audio>
+                            </div>
+                        </div>
+                        
+                        <div class="subgenre-container">
+                            <h4 class="subgenre-title" data-lang="electronic-club">Club Mood</h4>
+                            <div class="track">
+                                <div class="track-title" data-lang="track5-title">ATTRACTION</div>
+                                <div class="track-description" data-lang="track5-desc">An active song with strong bass lines.</div>
+                                <audio controls>
+                                    <source src="Attraction.mp3" type="audio/mpeg">
+                                    <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VOCALOID/SYNTH V Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">VOCALOID / SYNTH V</h3>
+                        <div class="text-field" data-lang="vocaloid-text">
+                            This section features compositions using vocaloids and voice synthesizers. These technologies allow creating unique vocal parts for games of any genre.
+                        </div>
+                        <div class="track">
+                            <div class="track-title" data-lang="track6-title">SYNTHESIZED VOCALS</div>
+                            <div class="track-description" data-lang="track6-desc">Experimental composition with synthesized vocals</div>
+                            <audio controls>
+                                <source src="harmony test.mp3" type="audio/mpeg">
+                                <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                            </audio>
+                        </div>
+                    </div>
+
+                    <!-- MUSICAL Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">MUSICAL</h3>
+                        <div class="track">
+                            <div class="track-title" data-lang="track7-title">PRINCESS</div>
+                            <div class="track-description" data-lang="track7-desc">Imagine a scene in a musical: a princess wakes up in a castle, this is our first impression of her. Sound processing is weak, unfortunately nothing fresh for this genre was found.</div>
+                            <audio controls>
+                                <source src="PRINCESS.mp3" type="audio/mpeg">
+                                <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                            </audio>
+                        </div>
+                    </div>
+
+                    <!-- CINEMATIC Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">CINEMATIC / OPENING</h3>
+                        <div class="track">
+                            <div class="track-title" data-lang="track8-title">BEYOND CODE</div>
+                            <div class="track-description" data-lang="track8-desc">Written as an introduction for an unreleased project.</div>
+                            <audio controls>
+                                <source src="Beyond Code.mp3" type="audio/mpeg">
+                                <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                            </audio>
+                        </div>
+                    </div>
+
+                    <!-- JAZZ/ELECTROSWING Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">JAZZ / ELECTROSWING</h3>
+                        <div class="track">
+                            <div class="track-title" data-lang="track9-title">TOUGHSAX</div>
+                            <div class="track-description" data-lang="track9-desc">Not the best example of jazz, but a great example of electroswing. The genres are similar, but this is a more danceable format, modernized with electronic synth and showing aggression.</div>
+                            <audio controls>
+                                <source src="TOUGHSAX.mp3" type="audio/mpeg">
+                                <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                            </audio>
+                        </div>
+                    </div>
+
+                    <!-- ROCK Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">ROCK (light mostly)</h3>
+                        <div class="track">
+                            <div class="track-title" data-lang="track10-title">7 AM feat. MIORIJI (vocals)</div>
+                            <div class="track-description" data-lang="track10-desc">A cute, kind song that evokes a feeling of vigor, a desire to get out of bed.</div>
+                            <audio controls>
+                                <source src="7 AM.mp3" type="audio/mpeg">
+                                <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                            </audio>
+                        </div>
+                    </div>
+
+                    <!-- OST Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">OST</h3>
+                        <div class="track">
+                            <div class="track-title" data-lang="track11-title">UTTERLY MOSSED</div>
+                            <div class="track-description" data-lang="track11-desc">The track is designed with several separate tracks that connect at the necessary moments in the game: Piano starts playing at a tense moment, scary violins at the moment of opening a new key event, and their joint sound signals danger.</div>
+                            <audio controls>
+                                <source src="utterly_mossed.mp3" type="audio/mpeg">
+                                <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                            </audio>
+                        </div>
+                    </div>
+
+                    <!-- POP Section -->
+                    <div class="genre-card">
+                        <h3 class="genre-title">POP</h3>
+                        <div class="track">
+                            <div class="track-title" data-lang="track12-title">FIRST LOVE KISS</div>
+                            <div class="track-description" data-lang="track12-desc">Minimalistic intro mixed with classics and electronics, but developing into emotional pop, perfect for vocals.</div>
+                            <audio controls>
+                                <source src="First Love Kiss.mp3" type="audio/mpeg">
+                                <span data-lang="audio-support">Your browser does not support the audio element.</span>
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel navigation -->
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="prev-btn">←</button>
+                    <div class="carousel-dots" id="carousel-dots"></div>
+                    <button class="carousel-btn" id="next-btn">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section id="conclusion" class="conclusion">
+        <div class="container">
+            <h2 class="section-title" data-lang="conclusion-title">Ну так что?</h2>
+            <p data-lang="conclusion-text">This lifelong journey of mine leads me up to loving challanges and interesting projects. Most of my songs are made as a "storyteller", but I can absolutely assure you - I know what your project needs and willing to help you! Please, contact me using the links down below or check out more of my stuff!</p>
+            <a href="#contact" class="btn" data-lang="contact-btn">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title" data-lang="contact-title">Contacts</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-label">Email:</span> hikkaswaw@gmail.com
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Discord:</span> hikkaslife
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://t.me/hikkasmusic" class="social-link" target="_blank">TG</a>
+                <a href="https://open.spotify.com/artist/4NYt3EYB15gnLA09OvvgII?si=_Iom6FTRQyivgOsehrr4EA&nd=1&dlsi=881ca0df255e40e3" class="social-link" target="_blank">SP</a>
+                <a href="https://www.youtube.com/@hikkasmusic" class="social-link" target="_blank">YT</a>
+                <a href="https://www.tiktok.com/@hikkas_life" class="social-link" target="_blank">TT</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p data-lang="footer-text">2025 HIKKAS (Herman).</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            // Language data
+            const translations = {
+                'en': {
+                    'home': 'Home',
+                    'music': 'Music',
+                    'conclusion': 'Conclusion',
+                    'contact': 'Contact',
+                    'name': 'Herman',
+                    'hero-text': 'I am 19 and I create unique music for video games in various genres. Check out my genres and tracks, I\'d be happy to work on your projects!',
+                    'listen-btn': 'Listen to Music',
+                    'music-title': 'My Music',
+                    'track1-title': 'NO SUCH THING',
+                    'track1-desc': 'A track showing a mix of emotions of the corresponding genre, created as a test of sound manipulation capabilities in 8-bit style.',
+                    'electronic-positive': 'Positive Mood',
+                    'track3-title': 'DAYDREAMING',
+                    'track3-desc': 'Optimistic electronic composition, inspiration, childhood',
+                    'electronic-sad': 'Sad Mood',
+                    'track4-title': 'FLOWERBLOOM',
+                    'track4-desc': 'A sad song about fading love. Minimalism and subtlety of emotion.',
+                    'electronic-club': 'Club Mood',
+                    'track5-title': 'ATTRACTION',
+                    'track5-desc': 'An active song with strong bass lines.',
+                    'vocaloid-text': 'This section features compositions using vocaloids and voice synthesizers. These technologies allow creating unique vocal parts for games of any genre.',
+                    'track6-title': 'SYNTHESIZED VOCALS',
+                    'track6-desc': 'Experimental composition with synthesized vocals',
+                    'track7-title': 'PRINCESS',
+                    'track7-desc': 'Imagine a scene in a musical: a princess wakes up in a castle, this is our first impression of her. Sound processing is weak, unfortunately nothing fresh for this genre was found.',
+                    'track8-title': 'BEYOND CODE',
+                    'track8-desc': 'Written as an introduction for an unreleased project.',
+                    'track9-title': 'TOUGHSAX',
+                    'track9-desc': 'Not the best example of jazz, but a great example of electroswing. The genres are similar, but this is a more danceable format, modernized with electronic synth and showing aggression.',
+                    'track10-title': '7 AM feat. MIORIJI (vocals)',
+                    'track10-desc': 'A cute, kind song that evokes a feeling of vigor, a desire to get out of bed.',
+                    'track11-title': 'UTTERLY MOSSED',
+                    'track11-desc': 'The track is designed with several separate tracks that connect at the necessary moments in the game: Piano starts playing at a tense moment, scary violins at the moment of opening a new key event, and their joint sound signals danger.',
+                    'track12-title': 'FIRST LOVE KISS',
+                    'track12-desc': 'Minimalistic intro mixed with classics and electronics, but developing into emotional pop, perfect for vocals.',
+                    'conclusion-title': 'So what?',
+                    'conclusion-text': 'This lifelong journey of mine leads me up to loving challanges and interesting projects. Most of my songs are made as a "storyteller", but I can absolutely assure you - I know what your project needs and willing to help you! Please, contact me using the links down below or check out more of my stuff!',
+                    'contact-btn': 'Contact Me',
+                    'contact-title': 'Contacts',
+                    'footer-text': '2025 HIKKAS (Herman).',
+                    'audio-support': 'Your browser does not support the audio element.'
+                },
+                'ru': {
+                    'home': 'Главная',
+                    'music': 'Музыка',
+                    'conclusion': 'Ну так что?',
+                    'contact': 'Контакты',
+                    'name': 'Герман',
+                    'hero-text': 'Мне 19 лет и я создаю уникальную музыку для видеоигр в различных жанрах. Ознакомьтесь с моими жанрами и треками, буду рад поработать над вашими проектами!',
+                    'listen-btn': 'Слушать музыку',
+                    'music-title': 'Моя музыка',
+                    'track1-title': 'NO SUCH THING',
+                    'track1-desc': 'Трек, показывающий микс эмоций соответствующего жанра, создавался как проверка возможностей управления звуками в 8-бит стиле.',
+                    'electronic-positive': 'Позитивное настроение',
+                    'track3-title': 'DAYDREAMING',
+                    'track3-desc': 'Оптимистичная электронная композиция, воодушевление, детство',
+                    'electronic-sad': 'Грустное настроение',
+                    'track4-title': 'FLOWERBLOOM',
+                    'track4-desc': 'Грустная песня об увядающей любви. Минимализм и тонкость эмоции.',
+                    'electronic-club': 'Клубное настроение',
+                    'track5-title': 'ATTRACTION',
+                    'track5-desc': 'Активная песня с сильными бассовыми линиями.',
+                    'vocaloid-text': 'В этом разделе представлены композиции с использованием вокалоидов и синтезаторов голоса. Эти технологии позволяют создавать уникальные вокальные партии для игр любого жанра.',
+                    'track6-title': 'СИНТЕЗИРОВАННЫЙ ГОЛОС',
+                    'track6-desc': 'Экспериментальная композиция с синтезированным вокалом',
+                    'track7-title': 'PRINCESS',
+                    'track7-desc': 'Представьте сцену в мьюзикле: принцесса просыпается в замке, это наше первое впечатление о ней. Обработка звука слабая, к сожалению ничего свежее для данного жанра не нашлось.',
+                    'track8-title': 'BEYOND CODE',
+                    'track8-desc': 'Написано как вступление для невышедшего проекта.',
+                    'track9-title': 'TOUGHSAX',
+                    'track9-desc': 'Не лучший пример джаза, но прекрасный пример электросвинга. Жанры похожи, однако это более танцевальный формат, модернизированный электронным синтом и показывающий агрессию.',
+                    'track10-title': '7 УТРА feat. MIORIJI (вокал)',
+                    'track10-desc': 'Милая, добрая песенка, вызывающая чувство бодрости, желание встать с кровати.',
+                    'track11-title': 'UTTERLY MOSSED',
+                    'track11-desc': 'Трек разработан с несколькими отдельными дорожками, которые подключаются в необходимые игре моменты: Пианино начинает играть в напряжённый момент, страшные скрипки в момент открытия нового ключевого события, а совместное их звучание сигнализирует об опасности.',
+                    'track12-title': 'FIRST LOVE KISS',
+                    'track12-desc': 'Минималистичное вступление смешанное с классикой и электроникой, однако развивающееся в эмоциональный поп, идеально для вокала.',
+                    'conclusion-title': 'Ну так что?',
+                    'conclusion-text': 'Я занимаюсь музыкой долгое время, и очень люблю это дело, тем более, когда музыка играет важную роль в проекте. Многие из моих песен не являются саундтреками, но я могу уверить вас - я знаю, что нужно вашему проекту, и всегда готов помочь! Пожалуйста, свяжитесь со мной по ссылкам ниже или ознакомьтесь с большим количеством моего творчества!',
+                    'contact-btn': 'Связаться со мной',
+                    'contact-title': 'Контакты',
+                    'footer-text': '2025 HIKKAS (Герман).',
+                    'audio-support': 'Ваш браузер не поддерживает аудио элемент.'
+                }
+            };
+
+            // Set initial language
+            let currentLang = 'en';
+            
+            // Language switching
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Change language
+                    currentLang = lang;
+                    updateLanguage();
+                });
+            });
+            
+            // Update all elements with data-lang attribute
+            function updateLanguage() {
+                const elementsToTranslate = document.querySelectorAll('[data-lang]');
+                
+                elementsToTranslate.forEach(element => {
+                    const key = element.getAttribute('data-lang');
+                    if (translations[currentLang] && translations[currentLang][key]) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = translations[currentLang][key];
+                        } else {
+                            element.textContent = translations[currentLang][key];
+                        }
+                    }
+                });
+            }
+            
+            // Initialize language
+            updateLanguage();
+            
+            // Carousel functionality
+            const carousel = document.getElementById('carousel');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dotsContainer = document.getElementById('carousel-dots');
+            
+            const cards = document.querySelectorAll('.genre-card');
+            const cardsPerView = 3;
+            let currentIndex = 0;
+            
+            // Create dots for carousel
+            function createDots() {
+                const totalSlides = Math.ceil(cards.length / cardsPerView);
+                
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('carousel-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            
+            // Update carousel position
+            function updateCarousel() {
+                const cardWidth = cards[0].offsetWidth + 20; // including margin
+                carousel.style.transform = `translateX(-${currentIndex * cardWidth * cardsPerView}px)`;
+                
+                // Update active dot
+                const dots = document.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // Go to specific slide
+            function goToSlide(index) {
+                const maxIndex = Math.ceil(cards.length / cardsPerView) - 1;
+                currentIndex = Math.max(0, Math.min(index, maxIndex));
+                updateCarousel();
+            }
+            
+            // Next slide
+            function nextSlide() {
+                const maxIndex = Math.ceil(cards.length / cardsPerView) - 1;
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Initialize carousel
+            createDots();
+            updateCarousel();
+            
+            // Header scroll behavior
+            const header = document.getElementById('header');
+            let lastScrollTop = 0;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down
+                    header.classList.add('hidden');
+                } else {
+                    // Scrolling up
+                    header.classList.remove('hidden');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
