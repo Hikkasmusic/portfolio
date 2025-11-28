@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* Header & Navigation */
+
         header {
             position: fixed;
             top: 0;
@@ -113,7 +113,7 @@
             background-color: var(--accent-color);
         }
 
-        /* Hero Section */
+
         .hero {
             height: 100vh;
             display: flex;
@@ -160,7 +160,7 @@
             transform: translateY(-3px);
         }
 
-        /* Sections */
+
         section {
             padding: 100px 0;
         }
@@ -179,12 +179,12 @@
             color: var(--text-color);
         }
 
-        /* Music Sections */
+
         .music-section {
             background-color: var(--secondary-color);
         }
 
-        /* Carousel container */
+
         .carousel-container {
             position: relative;
             overflow: hidden;
@@ -304,7 +304,7 @@
             font-size: 0.9rem;
         }
 
-        /* Carousel navigation */
+
         .carousel-nav {
             display: flex;
             justify-content: center;
@@ -352,7 +352,7 @@
             transform: scale(1.2);
         }
 
-        /* Conclusion Section */
+
         .conclusion {
             text-align: center;
             background-color: var(--primary-color);
@@ -364,7 +364,7 @@
             font-size: 1.2rem;
         }
 
-        /* Contact Section */
+
         .contact-info {
             text-align: center;
             margin-bottom: 30px;
@@ -407,14 +407,14 @@
             transform: translateY(-5px);
         }
 
-        /* Footer */
+
         footer {
             background-color: var(--secondary-color);
             padding: 30px 0;
             text-align: center;
         }
 
-        /* Responsive */
+
         @media (max-width: 1024px) {
             .genre-card {
                 flex: 0 0 calc(50% - 20px);
@@ -448,6 +448,7 @@
                 font-size: 2rem;
             }
             
+
             .genre-card {
                 flex: 0 0 calc(100% - 20px);
             }
@@ -459,7 +460,7 @@
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
+
     <header id="header">
         <div class="container nav-container">
             <div class="logo">HIKK<span>AS</span></div>
@@ -478,7 +479,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+
     <section id="home" class="hero">
         <div class="container hero-content">
             <h1>HIKKAS</h1>
@@ -488,15 +489,15 @@
         </div>
     </section>
 
-    <!-- Music Sections -->
+
     <section id="music" class="music-section">
         <div class="container">
             <h2 class="section-title" data-lang="music-title">My Music</h2>
             
-            <!-- Carousel container for genre cards -->
+
             <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel">
-                    <!-- 8-BIT Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">8-BIT</h3>
                         <div class="track">
@@ -509,7 +510,7 @@
                         </div>
                     </div>
 
-                    <!-- ELECTRONIC Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">ELECTRONIC</h3>
                         
@@ -550,7 +551,7 @@
                         </div>
                     </div>
 
-                    <!-- VOCALOID/SYNTH V Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">VOCALOID / SYNTH V</h3>
                         <div class="text-field" data-lang="vocaloid-text">
@@ -566,7 +567,7 @@
                         </div>
                     </div>
 
-                    <!-- MUSICAL Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">MUSICAL</h3>
                         <div class="track">
@@ -579,7 +580,7 @@
                         </div>
                     </div>
 
-                    <!-- CINEMATIC Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">CINEMATIC / OPENING</h3>
                         <div class="track">
@@ -592,7 +593,7 @@
                         </div>
                     </div>
 
-                    <!-- JAZZ/ELECTROSWING Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">JAZZ / ELECTROSWING</h3>
                         <div class="track">
@@ -605,7 +606,7 @@
                         </div>
                     </div>
 
-                    <!-- ROCK Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">ROCK (light mostly)</h3>
                         <div class="track">
@@ -618,7 +619,7 @@
                         </div>
                     </div>
 
-                    <!-- OST Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">OST</h3>
                         <div class="track">
@@ -631,7 +632,7 @@
                         </div>
                     </div>
 
-                    <!-- POP Section -->
+
                     <div class="genre-card">
                         <h3 class="genre-title">POP</h3>
                         <div class="track">
@@ -645,7 +646,7 @@
                     </div>
                 </div>
                 
-                <!-- Carousel navigation -->
+
                 <div class="carousel-nav">
                     <button class="carousel-btn" id="prev-btn">←</button>
                     <div class="carousel-dots" id="carousel-dots"></div>
@@ -655,7 +656,7 @@
         </div>
     </section>
 
-    <!-- Conclusion Section -->
+
     <section id="conclusion" class="conclusion">
         <div class="container">
             <h2 class="section-title" data-lang="conclusion-title">Ну так что?</h2>
@@ -664,7 +665,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+
     <section id="contact">
         <div class="container">
             <h2 class="section-title" data-lang="contact-title">Contacts</h2>
@@ -687,7 +688,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+
     <footer>
         <div class="container">
             <p data-lang="footer-text">2025 HIKKAS (Herman).</p>
@@ -695,11 +696,11 @@
     </footer>
 
     <script>
-        // Language switching functionality
+
         document.addEventListener('DOMContentLoaded', function() {
             const langButtons = document.querySelectorAll('.lang-btn');
             
-            // Language data
+
             const translations = {
                 'en': {
                     'home': 'Home',
@@ -787,25 +788,25 @@
                 }
             };
 
-            // Set initial language
+
             let currentLang = 'en';
             
-            // Language switching
+
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const lang = this.getAttribute('data-lang');
                     
-                    // Update active button
+
                     langButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Change language
+
                     currentLang = lang;
                     updateLanguage();
                 });
             });
             
-            // Update all elements with data-lang attribute
+
             function updateLanguage() {
                 const elementsToTranslate = document.querySelectorAll('[data-lang]');
                 
@@ -821,21 +822,28 @@
                 });
             }
             
-            // Initialize language
+
             updateLanguage();
             
-            // Carousel functionality
+
             const carousel = document.getElementById('carousel');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
             const dotsContainer = document.getElementById('carousel-dots');
             
             const cards = document.querySelectorAll('.genre-card');
-            const cardsPerView = 3;
-            let currentIndex = 0;
             
-            // Create dots for carousel
+
+            function getCardsPerView() {
+                return window.innerWidth <= 768 ? 1 : 3;
+            }
+            
+            let currentIndex = 0;
+            let cardsPerView = getCardsPerView();
+            
+
             function createDots() {
+                dotsContainer.innerHTML = '';
                 const totalSlides = Math.ceil(cards.length / cardsPerView);
                 
                 for (let i = 0; i < totalSlides; i++) {
@@ -847,26 +855,26 @@
                 }
             }
             
-            // Update carousel position
+
             function updateCarousel() {
-                const cardWidth = cards[0].offsetWidth + 20; // including margin
+                const cardWidth = cards[0].offsetWidth + 20; 
                 carousel.style.transform = `translateX(-${currentIndex * cardWidth * cardsPerView}px)`;
                 
-                // Update active dot
+
                 const dots = document.querySelectorAll('.carousel-dot');
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
                 });
             }
             
-            // Go to specific slide
+
             function goToSlide(index) {
                 const maxIndex = Math.ceil(cards.length / cardsPerView) - 1;
                 currentIndex = Math.max(0, Math.min(index, maxIndex));
                 updateCarousel();
             }
             
-            // Next slide
+
             function nextSlide() {
                 const maxIndex = Math.ceil(cards.length / cardsPerView) - 1;
                 if (currentIndex < maxIndex) {
@@ -875,7 +883,7 @@
                 }
             }
             
-            // Previous slide
+
             function prevSlide() {
                 if (currentIndex > 0) {
                     currentIndex--;
@@ -883,15 +891,26 @@
                 }
             }
             
-            // Event listeners
+
             prevBtn.addEventListener('click', prevSlide);
             nextBtn.addEventListener('click', nextSlide);
             
-            // Initialize carousel
+
+            window.addEventListener('resize', function() {
+                const newCardsPerView = getCardsPerView();
+                if (newCardsPerView !== cardsPerView) {
+                    cardsPerView = newCardsPerView;
+                    currentIndex = 0;
+                    createDots();
+                    updateCarousel();
+                }
+            });
+            
+
             createDots();
             updateCarousel();
             
-            // Header scroll behavior
+
             const header = document.getElementById('header');
             let lastScrollTop = 0;
             
@@ -899,17 +918,17 @@
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
                 if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    // Scrolling down
+
                     header.classList.add('hidden');
                 } else {
-                    // Scrolling up
+
                     header.classList.remove('hidden');
                 }
                 
                 lastScrollTop = scrollTop;
             });
             
-            // Smooth scrolling for navigation links
+
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -928,5 +947,4 @@
         });
     </script>
 </body>
-
 </html>
